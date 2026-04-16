@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/sfeir/Downloads/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crezio · Consultoría Empresarial</title>
+  <meta name="description" content="Consultoría financiera para empresas de todo tipo y tamaño. Análisis financiero, gestión y automatización con Google.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #fff; color: #1a1a1a; }
+
+    /* NAV */
+    nav {
+      background: #1a2e1a; padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 44px; height: 44px; background: #3DBF8A; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; font-weight: 600; color: #1a2e1a; letter-spacing: -1px;
+    }
+    .logo-name { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+    .logo-sub  { font-size: 9px; color: #3DBF8A; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-link {
+      background: transparent; color: rgba(255,255,255,0.7);
+      border: none; border-radius: 6px; padding: 7px 14px; font-size: 13px; cursor: pointer;
+      transition: background .15s, color .15s; font-family: inherit;
+    }
+    .nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    /* HERO */
+    .hero { background: #1a2e1a; padding: 90px 32px 100px; text-align: center; }
+    .hero h1 { font-size: 42px; font-weight: 600; color: #fff; line-height: 1.2; max-width: 580px; margin: 0 auto 18px; }
+    .hero h1 span { color: #3DBF8A; }
+    .hero p { font-size: 17px; color: #9fcfb8; max-width: 440px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #3DBF8A; color: #1a2e1a; border: none; border-radius: 8px;
+      padding: 14px 30px; font-size: 15px; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: opacity .15s;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-secondary {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,0.35); border-radius: 8px;
+      padding: 14px 30px; font-size: 15px; cursor: pointer; font-family: inherit;
+      transition: background .15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.07); }
+
+    /* SECTIONS */
+    .wrap { max-width: 740px; margin: 0 auto; padding: 72px 32px; }
+    .section-label { font-size: 11px; letter-spacing: 3px; color: #3DBF8A; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+    .section-title { font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; line-height: 1.3; }
+    .section-sub { font-size: 16px; color: #555; margin-bottom: 40px; line-height: 1.65; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+    .service-card { background: #f7f7f5; border: 1px solid #e8e8e4; border-radius: 14px; padding: 26px 22px; }
+    .service-icon { width: 42px; height: 42px; background: #e0f5ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .service-card h3 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .service-card p  { font-size: 14px; color: #666; line-height: 1.6; }
+
+    /* TABS */
+    .mvv-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .mvv-tab {
+      padding: 9px 22px; border-radius: 20px; font-size: 14px; font-weight: 500;
+      border: 1px solid #ddd; background: transparent; color: #666;
+      cursor: pointer; transition: all .2s; font-family: inherit;
+    }
+    .mvv-tab.active { background: #1a2e1a; color: #fff; border-color: #1a2e1a; }
+    .mvv-panel { display: none; }
+    .mvv-panel.active { display: block; }
+    .mvv-panel h3 { font-size: 20px; font-weight: 600; color: #1a1a1a; margin-bottom: 14px; }
+    .mvv-panel p  { font-size: 16px; color: #555; line-height: 1.8; }
+    .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 8px; }
+    .valor-card { background: #f7f7f5; border: 1px solid #e8e8e4; border-radius: 10px; padding: 18px; }
+    .valor-dot { width: 8px; height: 8px; border-radius: 50%; background: #3DBF8A; margin-bottom: 12px; }
+    .valor-card h4 { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 5px; }
+    .valor-card p  { font-size: 13px; color: #666; line-height: 1.5; }
+
+    /* PILARES */
+    .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+    .pilar-card {
+      background: #f7f7f5; border: 1px solid #e8e8e4; border-radius: 14px;
+      padding: 26px 22px; border-top: 3px solid #3DBF8A;
+    }
+    .pilar-card h3 { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .pilar-card p  { font-size: 13px; color: #666; line-height: 1.6; }
+
+    .divider { border: none; border-top: 1px solid #ebebeb; margin: 0 32px; }
+
+    /* CONTACT */
+    .contact-section { background: #f7f7f5; border-top: 1px solid #ebebeb; padding: 72px 32px; }
+    .contact-inner { max-width: 540px; margin: 0 auto; }
+    .contact-inner h2 { font-size: 26px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+    .contact-inner > p { font-size: 15px; color: #666; margin-bottom: 32px; line-height: 1.65; }
+    .form-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .form-row input { flex: 1; min-width: 140px; }
+    input[type=text], input[type=email], textarea {
+      width: 100%; padding: 11px 14px; border: 1px solid #ddd; border-radius: 8px;
+      font-size: 14px; font-family: inherit; color: #1a1a1a; background: #fff;
+      outline: none; transition: border .15s;
+    }
+    input[type=text]:focus, input[type=email]:focus, textarea:focus { border-color: #3DBF8A; }
+    textarea { height: 110px; resize: none; margin-bottom: 12px; display: block; }
+    .btn-submit {
+      width: 100%; background: #1a2e1a; color: #fff; border: none; border-radius: 8px;
+      padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer;
+      margin-bottom: 12px; font-family: inherit; transition: opacity .15s;
+    }
+    .btn-submit:hover { opacity: .88; }
+    .wa-btn {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #fff; color: #1a1a1a; border: 1px solid #ddd;
+      border-radius: 8px; padding: 14px; font-size: 15px; cursor: pointer;
+      text-decoration: none; font-family: inherit; transition: border-color .15s;
+    }
+    .wa-btn:hover { border-color: #25D366; }
+    .wa-dot { width: 22px; height: 22px; background: #25D366; border-radius: 50%; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer {
+      background: #1a2e1a; padding: 26px 32px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo span { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+    footer p { font-size: 12px; color: #9fcfb8; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      .wrap { padding: 52px 20px; }
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">(Z</div>
+    <div>
+      <div class="logo-name">crezio</div>
+      <div class="logo-sub">CONSULTORÍA EMPRESARIAL</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="goTo(&#39;servicios&#39;)">Servicios</button>
+    <button class="nav-link" onclick="goTo(&#39;nosotros&#39;)">Nosotros</button>
+    <button class="nav-link" onclick="goTo(&#39;pilares&#39;)">Pilares</button>
+    <button class="nav-link" onclick="goTo(&#39;contacto&#39;)">Contacto</button>
+  </div>
+</nav>
+
+<div id="inicio" class="hero">
+  <h1>Tu negocio merece <span>números claros</span></h1>
+  <p>Acompañamos a empresas de todo el país a entender sus finanzas, organizar su gestión y crecer con certeza.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="goTo(&#39;contacto&#39;)">Contactanos</button>
+    <button class="btn-secondary" onclick="goTo(&#39;servicios&#39;)">Ver servicios</button>
+  </div>
+</div>
+
+<div id="servicios" class="wrap">
+  <div class="section-label">Servicios</div>
+  <div class="section-title">Lo que hacemos por tu negocio</div>
+  <p class="section-sub">Soluciones concretas para que sepas exactamente dónde estás parado.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="12" width="3" height="6" rx="1" fill="#1D9E75"></rect>
+          <rect x="7" y="8" width="3" height="10" rx="1" fill="#1D9E75" opacity="0.7"></rect>
+          <rect x="12" y="4" width="3" height="14" rx="1" fill="#1D9E75" opacity="0.45"></rect>
+          <polyline points="2,11 8,6 13,3 17,1" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline>
+        </svg>
+      </div>
+      <h3>Análisis financiero</h3>
+      <p>Diagnóstico completo de ratios, rentabilidad y proyecciones, potenciado con herramientas de Business Intelligence para convertir tus datos financieros en decisiones concretas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="2" width="14" height="16" rx="2" stroke="#1D9E75" stroke-width="1.5"></rect>
+          <line x1="6" y1="7" x2="14" y2="7" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"></line>
+          <line x1="6" y1="10" x2="14" y2="10" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"></line>
+          <line x1="6" y1="13" x2="10" y2="13" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"></line>
+        </svg>
+      </div>
+      <h3>Gestión para pymes</h3>
+      <p>Organizamos tus ingresos, egresos y costos para que tengas certeza total sobre la situación financiera de tu empresa.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="5" width="16" height="12" rx="2" stroke="#1D9E75" stroke-width="1.5"></rect>
+          <line x1="2" y1="9" x2="18" y2="9" stroke="#1D9E75" stroke-width="1.2"></line>
+          <circle cx="6" cy="7" r="1" fill="#1D9E75"></circle>
+          <circle cx="10" cy="7" r="1" fill="#1D9E75"></circle>
+          <line x1="5" y1="12" x2="9" y2="12" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"></line>
+          <line x1="11" y1="12" x2="15" y2="12" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"></line>
+        </svg>
+      </div>
+      <h3>Automatización Google</h3>
+      <p>Sistema completo en Google Sheets con dashboards, fórmulas y control financiero automatizado.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div id="nosotros" class="wrap">
+  <div class="section-label">Nosotros</div>
+  <div class="section-title">Quiénes somos</div>
+  <p class="section-sub">Trabajamos con empresas de todos los rubros y tamaños: desde emprendimientos hasta empresas consolidadas.</p>
+  <div class="mvv-tabs">
+    <button class="mvv-tab active" onclick="showTab(&#39;mision&#39;, this)">Misión</button>
+    <button class="mvv-tab" onclick="showTab(&#39;vision&#39;, this)">Visión</button>
+    <button class="mvv-tab" onclick="showTab(&#39;valores&#39;, this)">Valores</button>
+  </div>
+  <div id="tab-mision" class="mvv-panel active">
+    <h3>Nuestra misión</h3>
+    <p>Brindar consultoría financiera y contable accesible, clara y efectiva para empresas de todo tipo y tamaño. Queremos que cada empresario entienda sus números, tome decisiones con confianza y construya un negocio sostenible en el tiempo.</p>
+  </div>
+  <div id="tab-vision" class="mvv-panel">
+    <h3>Nuestra visión</h3>
+    <p>Ser el partner financiero de referencia para las empresas argentinas, reconocidos por transformar negocios a través de la claridad numérica, la tecnología y el acompañamiento humano. Un país donde cada emprendedor sepa exactamente dónde está parado.</p>
+  </div>
+  <div id="tab-valores" class="mvv-panel">
+    <h3>Nuestros valores</h3>
+    <div class="valores-grid">
+      <div class="valor-card"><div class="valor-dot"></div><h4>Claridad</h4><p>Sin tecnicismos. Los números deben entenderse, no intimidar.</p></div>
+      <div class="valor-card"><div class="valor-dot"></div><h4>Compromiso</h4><p>Nos involucramos como si el negocio fuera nuestro.</p></div>
+      <div class="valor-card"><div class="valor-dot"></div><h4>Honestidad</h4><p>Decimos lo que necesitás escuchar, no lo que querés oír.</p></div>
+      <div class="valor-card"><div class="valor-dot"></div><h4>Crecimiento</h4><p>Todo lo que hacemos apunta a que tu negocio avance.</p></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div id="pilares" class="wrap">
+  <div class="section-label">Pilares</div>
+  <div class="section-title">Cómo trabajamos</div>
+  <p class="section-sub">Los principios que guían cada consultoría que hacemos.</p>
+  <div class="pilares-grid">
+    <div class="pilar-card"><h3>Acompañamiento personalizado</h3><p>Cada negocio es único. Nos adaptamos a tu realidad, tu ritmo y tus objetivos particulares.</p></div>
+    <div class="pilar-card"><h3>Tecnología aplicada</h3><p>Usamos herramientas digitales para automatizar procesos y darte información en tiempo real.</p></div>
+    <div class="pilar-card"><h3>Comunicación directa</h3><p>Sin rodeos ni burocracia. Hablamos claro y estamos disponibles cuando nos necesitás.</p></div>
+    <div class="pilar-card"><h3>Soluciones a medida</h3><p>No aplicamos fórmulas genéricas. Cada solución se diseña para tu negocio específico.</p></div>
+    <div class="pilar-card"><h3>Claridad financiera</h3><p>Traducimos los números a lenguaje simple para que puedas tomar decisiones con certeza.</p></div>
+    <div class="pilar-card"><h3>Confidencialidad</h3><p>Tu información financiera es sensible. La tratamos con total discreción y profesionalismo.</p></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div id="contacto" class="contact-section">
+  <div class="contact-inner">
+    <h2>Hablemos</h2>
+    <p>Contanos de tu negocio y te respondemos a la brevedad. Trabajamos con todo tipo de empresas en todo el país.</p>
+    <div class="form-row">
+      <input type="text" id="f-nombre" placeholder="Tu nombre">
+      <input type="text" id="f-empresa" placeholder="Tu empresa">
+    </div>
+    <input type="email" id="f-email" placeholder="Email" style="margin-bottom:12px;">
+    <textarea id="f-mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
+    <button class="btn-submit" onclick="enviarFormulario()">Enviar por WhatsApp</button>
+    <a class="wa-btn" href="https://wa.me/543834234597?text=Hola%20Crezio%2C%20quiero%20consultar%20sobre%20sus%20servicios" target="_blank">
+      <div class="wa-dot"></div>
+      Escribinos directamente por WhatsApp
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="logo-icon" style="width:34px;height:34px;font-size:13px;border-radius:8px;">(Z</div>
+    <span>crezio</span>
+  </div>
+  <p>© 2025 Crezio Consultoría Empresarial · Argentina</p>
+</footer>
+
+<script>
+function goTo(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function showTab(name, btn) {
+  document.querySelectorAll('.mvv-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.mvv-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+function enviarFormulario() {
+  var nombre  = document.getElementById('f-nombre').value  || 'Sin nombre';
+  var empresa = document.getElementById('f-empresa').value || 'Sin empresa';
+  var email   = document.getElementById('f-email').value   || 'Sin email';
+  var mensaje = document.getElementById('f-mensaje').value || 'Sin mensaje';
+  var texto = 'Hola Crezio! Les escribo desde su web.%0A%0A*Nombre:* ' + encodeURIComponent(nombre) +
+              '%0A*Empresa:* ' + encodeURIComponent(empresa) +
+              '%0A*Email:* ' + encodeURIComponent(email) +
+              '%0A*Consulta:* ' + encodeURIComponent(mensaje);
+  window.open('https://wa.me/543834234597?text=' + texto, '_blank');
+}
+</script>
+
+
+</body></html>
