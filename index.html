@@ -155,7 +155,8 @@
   </div>
 </nav>
 
-<div id="inicio" class="hero">
+<div id="inicio" class="hero" style="position:relative;overflow:hidden;">
+  <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.55;pointer-events:none;"></canvas>
   <h1>Tu negocio merece <span>números claros</span></h1>
   <p>Acompañamos a empresas de todo el país a entender sus finanzas, organizar su gestión y crecer con certeza.</p>
   <div class="hero-btns">
@@ -313,6 +314,101 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init("q4oboFQKuTGVkAMcB");
+// Canvas animado hero — barras + lluvia de números
+(function(){
+  var c = document.getElementById('hero-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var W, H, t = 0;
+
+  function resize() {
+    W = c.width = c.offsetWidth;
+    H = c.height = c.offsetHeight;
+    initBars();
+  }
+
+  // BARRAS
+  var bars = [];
+  function initBars() {
+    bars = [];
+    var count = Math.floor(W / 48);
+    for (var i = 0; i < count; i++) {
+      bars.push({
+        x: i * 48 + 16,
+        targetH: Math.random() * (H * 0.45) + H * 0.08,
+        currentH: Math.random() * H * 0.1,
+        speed: Math.random() * 1.2 + 0.4,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  // LLUVIA DE NÚMEROS
+  var drops = [];
+  var nums = ['0','1','2','3','4','5','6','7','8','9',
+              '$','%','+','-','=','∑','Δ','×','÷',
+              'EBITDA','ROE','VAN','TIR','WACC','P&L',
+              'OPEX','ROA','CAPEX','Margen','Utilidad'];
+  for (var i = 0; i < 38; i++) {
+    drops.push({
+      text: nums[Math.floor(Math.random() * nums.length)],
+      x: Math.random() * 1400,
+      y: Math.random() * 800 - 200,
+      size: Math.random() * 7 + 10,
+      speed: Math.random() * 0.6 + 0.2,
+      opacity: Math.random() * 0.45 + 0.1,
+      timer: Math.floor(Math.random() * 120)
+    });
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.012;
+
+    // Dibujar barras en la parte inferior
+    bars.forEach(function(bar, idx) {
+      var pulse = Math.sin(t + bar.phase) * 0.12 + 1;
+      bar.currentH += (bar.targetH * pulse - bar.currentH) * bar.speed * 0.03;
+      var bh = bar.currentH;
+      var bw = 28;
+      ctx.globalAlpha = 0.18;
+      ctx.fillStyle = '#3DBF8A';
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(bar.x, H - bh, bw, bh, [4,4,0,0]) : ctx.rect(bar.x, H - bh, bw, bh);
+      ctx.fill();
+      // Top accent
+      ctx.globalAlpha = 0.35;
+      ctx.fillRect(bar.x, H - bh, bw, 3);
+    });
+
+    // Dibujar lluvia de números
+    drops.forEach(function(drop) {
+      drop.timer--;
+      if (drop.timer <= 0) {
+        drop.text = nums[Math.floor(Math.random() * nums.length)];
+        drop.timer = Math.floor(Math.random() * 180) + 60;
+      }
+      ctx.globalAlpha = drop.opacity;
+      ctx.fillStyle = '#d4ede0';
+      ctx.font = drop.size + 'px "Courier New", monospace';
+      ctx.fillText(drop.text, drop.x % W, drop.y % (H + 40));
+      drop.y += drop.speed;
+      if (drop.y > H + 30) {
+        drop.y = -20;
+        drop.x = Math.random() * W;
+        drop.opacity = Math.random() * 0.45 + 0.1;
+      }
+    });
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
 function goTo(id) {
   var el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
