@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)file:///C:/Users/sfeir/Downloads/index.html -->
+<!-- saved from url=(0049)file:///C:/Users/sfeir/Downloads/index%20(1).html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -270,7 +270,7 @@
     </div>
     <input type="email" id="f-email" placeholder="Email" style="margin-bottom:12px;">
     <textarea id="f-mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
-    <button class="btn-submit" onclick="enviarFormulario()">Enviar por WhatsApp</button>
+    <button class="btn-submit" onclick="enviarEmail()">Enviar por email</button>
     <a class="wa-btn" href="https://wa.me/543834234597?text=Hola%20Crezio%2C%20quiero%20consultar%20sobre%20sus%20servicios" target="_blank">
       <div class="wa-dot"></div>
       Escribinos directamente por WhatsApp
@@ -296,6 +296,15 @@ function showTab(name, btn) {
   document.querySelectorAll('.mvv-tab').forEach(function(t){ t.classList.remove('active'); });
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
+}
+function enviarEmail() {
+  var nombre  = document.getElementById('f-nombre').value  || 'Sin nombre';
+  var empresa = document.getElementById('f-empresa').value || 'Sin empresa';
+  var email   = document.getElementById('f-email').value   || 'Sin email';
+  var mensaje = document.getElementById('f-mensaje').value || 'Sin mensaje';
+  var subject = encodeURIComponent('Consulta desde la web - ' + empresa);
+  var body = encodeURIComponent('Nombre: ' + nombre + '\nEmpresa: ' + empresa + '\nEmail: ' + email + '\n\nConsulta:\n' + mensaje);
+  window.open('mailto:administracion@crezioconsultora.com?subject=' + subject + '&body=' + body, '_blank');
 }
 function enviarFormulario() {
   var nombre  = document.getElementById('f-nombre').value  || 'Sin nombre';
