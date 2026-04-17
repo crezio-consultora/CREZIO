@@ -113,14 +113,6 @@
       margin-bottom: 12px; font-family: inherit; transition: opacity .15s;
     }
     .btn-submit:hover { opacity: .88; }
-    .wa-btn {
-      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: #fff; color: #1a1a1a; border: 1px solid #ddd;
-      border-radius: 8px; padding: 14px; font-size: 15px; cursor: pointer;
-      text-decoration: none; font-family: inherit; transition: border-color .15s;
-    }
-    .wa-btn:hover { border-color: #25D366; }
-    .wa-dot { width: 22px; height: 22px; background: #25D366; border-radius: 50%; flex-shrink: 0; }
 
     /* FOOTER */
     footer {
@@ -277,11 +269,7 @@
       <input type="text" id="f-provincia" placeholder="Provincia / Estado" />
     </div>
     <textarea id="f-mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
-    <p id="msg-ok" style="display:none;color:#1D9E75;font-size:14px;text-align:center;padding:10px 0;">✓ Consulta enviada. Te respondemos a la brevedad.</p><p id="msg-err" style="display:none;color:#e24b4a;font-size:14px;text-align:center;padding:10px 0;">Hubo un error. Escribinos por WhatsApp.</p><button class="btn-submit" id="btn-email" onclick="enviarEmail()">Enviar consulta por email</button>
-    <a class="wa-btn" href="https://wa.me/543834234597?text=Hola%20Crezio%2C%20quiero%20consultar%20sobre%20sus%20servicios" target="_blank">
-      <div class="wa-dot"></div>
-      Escribinos directamente por WhatsApp
-    </a>
+    <p id="msg-ok" style="display:none;color:#1D9E75;font-size:14px;text-align:center;padding:10px 0;">✓ Consulta enviada. Te respondemos a la brevedad.</p><p id="msg-err" style="display:none;color:#e24b4a;font-size:14px;text-align:center;padding:10px 0;">Hubo un error al enviar. Por favor intentá de nuevo.</p><button class="btn-submit" id="btn-email" onclick="enviarEmail()">Enviar consulta por email</button>
   </div>
 </div>
 
@@ -338,17 +326,6 @@ function enviarEmail() {
     document.getElementById('msg-ok').style.display = 'none';
     btn.textContent = 'Enviar consulta por email'; btn.disabled = false;
   });
-}
-function enviarFormulario() {
-  var nombre  = document.getElementById('f-nombre').value  || 'Sin nombre';
-  var empresa = document.getElementById('f-empresa').value || 'Sin empresa';
-  var email   = document.getElementById('f-email').value   || 'Sin email';
-  var mensaje = document.getElementById('f-mensaje').value || 'Sin mensaje';
-  var texto = 'Hola Crezio! Les escribo desde su web.%0A%0A*Nombre:* ' + encodeURIComponent(nombre) +
-              '%0A*Empresa:* ' + encodeURIComponent(empresa) +
-              '%0A*Email:* ' + encodeURIComponent(email) +
-              '%0A*Consulta:* ' + encodeURIComponent(mensaje);
-  window.open('https://wa.me/543834234597?text=' + texto, '_blank');
 }
 </script>
 </body>
