@@ -53,17 +53,17 @@
     .btn-secondary:hover { background: rgba(255,255,255,0.07); }
 
     /* SECTIONS */
-    .wrap { max-width: 740px; margin: 0 auto; padding: 72px 32px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 72px 32px; }
     .section-label { font-size: 11px; letter-spacing: 3px; color: #3DBF8A; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
     .section-title { font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; line-height: 1.3; }
     .section-sub { font-size: 16px; color: #555; margin-bottom: 40px; line-height: 1.65; }
 
     /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
-    .service-card { background: #f7f7f5; border: 1px solid #e8e8e4; border-radius: 14px; padding: 26px 22px; }
-    .service-icon { width: 42px; height: 42px; background: #e0f5ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .service-card h3 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
-    .service-card p  { font-size: 14px; color: #666; line-height: 1.6; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .service-card { background: #f7f7f5; border: 1px solid #e8e8e4; border-radius: 14px; padding: 24px 20px; }
+    .service-icon { width: 40px; height: 40px; background: #e0f5ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .service-card h3 { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+    .service-card p  { font-size: 13px; color: #666; line-height: 1.65; }
 
     /* TABS */
     .mvv-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
@@ -93,6 +93,20 @@
     .pilar-card p  { font-size: 13px; color: #666; line-height: 1.6; }
 
     .divider { border: none; border-top: 1px solid #ebebeb; margin: 0 32px; }
+    .proceso-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+    .proceso-step { text-align: center; padding: 8px; position: relative; }
+    .proceso-step:not(:last-child)::after { content: ''; position: absolute; top: 28px; right: -8px; width: 16px; height: 2px; background: #3DBF8A; opacity: 0.4; }
+    .paso-num { width: 52px; height: 52px; border-radius: 50%; background: #1a2e1a; color: #3DBF8A; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; border: 2px solid #3DBF8A; }
+    .proceso-step h4 { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+    .proceso-step p { font-size: 12px; color: #666; line-height: 1.55; }
+    @media (max-width: 768px) { .proceso-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .proceso-step:not(:last-child)::after { display: none; } }
+    .faq-item { border-bottom: 1px solid #ebebeb; padding: 20px 0; cursor: pointer; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 600; color: #1a1a1a; }
+    .faq-answer { font-size: 14px; color: #666; line-height: 1.7; margin-top: 12px; display: none; }
+    .faq-answer.open { display: block; }
+    .faq-icon { font-size: 20px; color: #3DBF8A; font-weight: 300; transition: transform .2s; flex-shrink: 0; }
+    .faq-icon.open { transform: rotate(45deg); }
 
     /* CONTACT */
     .contact-section { background: #f7f7f5; border-top: 1px solid #ebebeb; padding: 72px 32px; }
@@ -133,6 +147,7 @@
     .footer-logo span { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 2px; }
     footer p { font-size: 12px; color: #9fcfb8; }
 
+    @media (max-width: 768px) { .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) {
       .hero h1 { font-size: 30px; }
       .wrap { padding: 52px 20px; }
@@ -150,6 +165,8 @@
   <div class="nav-links">
     <button class="nav-link" onclick="goTo('nosotros')">Nosotros</button>
     <button class="nav-link" onclick="goTo('servicios')">Servicios</button>
+    <button class="nav-link" onclick="goTo('faq')">Preguntas frecuentes</button>
+    <button class="nav-link" onclick="goTo('proceso')">Proceso</button>
     <button class="nav-link" onclick="goTo('pilares')">Pilares</button>
     <button class="nav-link" onclick="goTo('contacto')">Contacto</button>
   </div>
@@ -237,6 +254,83 @@
       </div>
       <h3>Automatización Google</h3>
       <p>Sistema completo en Google Sheets con dashboards, fórmulas y control financiero automatizado.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <circle cx="4" cy="10" r="2" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+          <circle cx="16" cy="4" r="2" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+          <circle cx="16" cy="16" r="2" stroke="#1D9E75" stroke-width="1.5" fill="none"/>
+          <line x1="6" y1="9" x2="14" y2="5" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="6" y1="11" x2="14" y2="15" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Automatización con n8n</h3>
+      <p>Si llevás tus números en Excel o Google Sheets, automatizamos tus registros de ventas, gastos y resultados para que se actualicen solos. Menos tiempo cargando datos, más tiempo haciendo crecer tu negocio.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div id="faq" class="wrap">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">Preguntas frecuentes</div>
+  <p class="section-sub">Todo lo que necesitás saber antes de contactarnos.</p>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">¿Con qué tipo de empresas trabajamos? <span class="faq-icon">+</span></div>
+    <div class="faq-answer">Con empresas, pymes y emprendedores de cualquier rubro y tamaño de todo el país.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">¿Cómo es el proceso para empezar? <span class="faq-icon">+</span></div>
+    <div class="faq-answer">Nos contactás, hacemos una primera charla para entender tu situación y te presentamos una propuesta adaptada a tus necesidades.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">¿Trabajan de forma remota? <span class="faq-icon">+</span></div>
+    <div class="faq-answer">Sí, trabajamos 100% de forma remota con clientes de todo el país.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">¿Qué necesito para empezar? <span class="faq-icon">+</span></div>
+    <div class="faq-answer">Solo tus datos financieros básicos: ventas, gastos y lo que tengas registrado. Nos adaptamos a lo que tenés.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">¿Cuánto tiempo lleva ver resultados? <span class="faq-icon">+</span></div>
+    <div class="faq-answer">Depende del servicio y de la situación de cada negocio. Lo que sí podemos decir es que desde la primera consultoría vas a tener una visión más clara de dónde estás parado.</div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div id="proceso" class="wrap">
+  <div class="section-label">Proceso</div>
+  <div class="section-title">Cómo trabajamos</div>
+  <p class="section-sub">Un proceso claro y transparente de principio a fin.</p>
+  <div class="proceso-grid">
+    <div class="proceso-step">
+      <div class="paso-num">1</div>
+      <h4>Nos contactás</h4>
+      <p>Completás el formulario o nos escribís por WhatsApp.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">2</div>
+      <h4>Primera charla</h4>
+      <p>Entendemos tu situación, tu negocio y qué necesitás.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">3</div>
+      <h4>Propuesta personalizada</h4>
+      <p>Te presentamos un plan adaptado a tu realidad.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">4</div>
+      <h4>Implementación</h4>
+      <p>Ejecutamos el servicio acordado con seguimiento continuo.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">5</div>
+      <h4>Resultados</h4>
+      <p>Revisamos los avances y ajustamos lo que sea necesario.</p>
     </div>
   </div>
 </div>
@@ -409,6 +503,14 @@ emailjs.init("q4oboFQKuTGVkAMcB");
   draw();
 })();
 
+function toggleFaq(item) {
+  var answer = item.querySelector('.faq-answer');
+  var icon = item.querySelector('.faq-icon');
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-answer').forEach(function(a){ a.classList.remove('open'); });
+  document.querySelectorAll('.faq-icon').forEach(function(i){ i.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
 function goTo(id) {
   var el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
