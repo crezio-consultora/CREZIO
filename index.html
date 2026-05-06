@@ -545,14 +545,14 @@ function enviarEmail() {
     },
     body: JSON.stringify({
       fields: {
-        'Empresa / Cliente': empresa || nombre,
-        'Contacto': nombre,
-        'Teléfono': telefono,
-        'Email': email,
-        'Origen': 'Landing page',
-        'Estado': 'Nuevo',
-        'Tipo': 'Lead',
-        'Notas': mensaje + (pais ? ' | País: ' + pais : '') + (provincia ? ' | Provincia: ' + provincia : '')
+        'EMPRESA / CLIENTE': empresa || nombre,
+        'CONTACTO': nombre,
+        'TELEFONO': telefono,
+        'EMAIL': email,
+        'ORIGEN': 'Landing page',
+        'ESTADO': 'Nuevo',
+        'TIPO': 'Lead',
+        'NOTAS': mensaje + (pais ? ' | País: ' + pais : '') + (provincia ? ' | Provincia: ' + provincia : '')
       }
     })
   }).catch(function(){});
